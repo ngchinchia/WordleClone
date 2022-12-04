@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 
 function App() {
+
   const [solution, setSolution] = useState(null)
   
+  /* Generates a fetch request, execute callback once only when dependency(setSolution) changes */
   useEffect(() => {
     fetch('http://localhost:3001/solutions')
       .then(res => res.json())

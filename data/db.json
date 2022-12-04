@@ -1,3 +1,4 @@
+/* Contains different word solutions */
 {
     "solutions": [
       {"id": 1, "word": "ninja"},
@@ -17,4 +18,3 @@
       {"id": 15, "word": "hello"}
     ]
   }
-
