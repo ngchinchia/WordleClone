@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-const useWorlde = (solution) => {
-  const [turn, setTurn] = useState(0); //Tracks what turn the user is on, after 6 guesses, it is game over. 
-  const [currentGuess, setCurrentGuess] = useState(""); //Tracking what the user is currently typing in current guess and update.
+const useWordle = (solution) => {
+  const [turn, setTurn] = useState(0); // Tracks what turn the user is on, after 6 guesses, it is game over.
+  const [currentGuess, setCurrentGuess] = useState(""); // Tracking what the user is currently typing in current guess and update.
   const [guesses, setGuesses] = useState([]); // each guess is an array
   const [history, setHistory] = useState([]); // each guess is a string
   const [isCorrect, setIsCorrect] = useState(false); //Changes true only when user wins game.
@@ -18,9 +18,28 @@ const useWorlde = (solution) => {
 
   // handle keyup event & track current guess
   // if user presses enter, add the new guess
-  const handleKeyup = () => {};
+  const handleKeyup = ({ key }) => {
+    console.log("key pressed - ", key);
 
-  return {turn, currentGuess, guesses, isCorrect, handleKeyup}
+    /* Allows deletion of letter */
+    if (key === "Backspace") {
+      setCurrentGuess((prev) => {
+        return prev.slice(0, -1);
+      });
+      return; // Returns new string based on old string that removes last character
+    }
+
+    /* Only display letters at max length of 5 that are pressed */
+    if (/^[A-Za-z]$/.test(key)) {
+      if (currentGuess.length < 5) {
+        setCurrentGuess((prev) => {
+          return prev + key;
+        });
+      }
+    }
+  };
+
+  return { turn, currentGuess, guesses, isCorrect, handleKeyup };
 };
 
 export default useWordle;
