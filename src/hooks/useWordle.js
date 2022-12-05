@@ -1,3 +1,4 @@
+/* THIS FILE CONTAIN GAME LOGIC */
 import { useState } from "react";
 
 const useWordle = (solution) => {
@@ -5,7 +6,7 @@ const useWordle = (solution) => {
   const [currentGuess, setCurrentGuess] = useState(""); // Tracking what the user is currently typing in current guess and update.
   const [guesses, setGuesses] = useState([...Array(6)]); // each guess is an array
   const [history, setHistory] = useState([]); // each guess is a string
-  const [isCorrect, setIsCorrect] = useState(false); //Changes true only when user wins game.
+  const [isCorrect, setIsCorrect] = useState(false); // Changes true only when user wins game.
   const [usedKeys, setUsedKeys] = useState({}) // {a: 'green', b: 'yellow', c: 'grey'}
 
   // format a guess into an array of letter objects

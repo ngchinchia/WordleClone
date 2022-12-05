@@ -1,3 +1,4 @@
+/* THIS FILE CONTAIN UI COMPONENTS OF THE GAME */
 import React, { useEffect, useState } from "react";
 import useWordle from "../hooks/useWordle";
 import Grid from "./Grid";
@@ -5,7 +6,7 @@ import Keypad from "./Keypad";
 import Modal from "./Modal";
 
 export default function Wordle({ solution }) {
-  /* Grabbing things from useWorld.js */
+  /* Grabbing things from useWordle.js */
   const { currentGuess, handleKeyup, guesses, isCorrect, turn, usedKeys } = useWordle(solution);
   const [showModal, setShowModal] = useState(false)
 
