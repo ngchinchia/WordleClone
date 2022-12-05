@@ -14,20 +14,19 @@ const useWordle = (solution) => {
   const formatGuess = () => {
     let solutionArray = [...solution]; // Gets copy of solution as an array
     let formattedGuess = [...currentGuess].map((l) => {
-      // Gets copy of user's guess as an array and map each individual letter
+      // Turn each letter as a key and setting its color
       return { key: l, color: "grey" };
     });
 
-    // Check for green letters
+    // Check for any GREEN letters
     formattedGuess.forEach((l, i) => {
-      // forEach letter and index
       if (solutionArray[i] === l.key) {
         formattedGuess[i].color = "green";
-        solutionArray[i] = null;
+        solutionArray[i] = null; // After matching, set it to null to prevent double matching
       }
     });
 
-    // Check for yellow letters
+    // Check for any YELLOW letters
     formattedGuess.forEach((l, i) => {
       if (solutionArray.includes(l.key) && l.color !== "green") {
         formattedGuess[i].color = "yellow";
@@ -98,15 +97,18 @@ const useWordle = (solution) => {
       }
       // do not allow duplicate words
       if (history.includes(currentGuess)) {
-        console.log("you already tried that word");
+        window.alert("You have already tried the word, please enter a different word.");
+        setCurrentGuess((prev) => {
+          return prev = ('')
+        })
         return;
       }
       // check word is 5 chars long
       if (currentGuess.length !== 5) {
-        console.log("word must be 5 chars long");
+        window.alert("Word must be 5 characters long, please fill in all blanks!");
         return;
       }
-      const formatted = formatGuess();
+      const formatted = formatGuess(); /* function is called if all conditions above are bypassed */
       addNewGuess(formatted);
     }
 
