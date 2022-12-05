@@ -7,7 +7,7 @@ function App() {
   
   /* Generates a fetch request, execute callback once only when dependency(setSolution) changes */
   useEffect(() => {
-    fetch('http://localhost:3001/solutions')
+    fetch('http://localhost:3002/solutions')
       .then(res => res.json())
       .then(json => {
         // random int between 0 & 14 
